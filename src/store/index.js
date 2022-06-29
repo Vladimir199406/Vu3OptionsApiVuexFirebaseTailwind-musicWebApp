@@ -12,6 +12,6 @@ export default createStore({
   actions: {},
   modules: {},
   getters: {
-    authModalShow: (state) => state.authModalShow,
+  //  authModalShow: (state) => state.authModalShow,
   },
 });
