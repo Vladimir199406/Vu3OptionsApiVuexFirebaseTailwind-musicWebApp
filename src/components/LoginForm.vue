@@ -83,7 +83,7 @@ export default {
     return {
       loginSchema: {
         email: 'required|email',
-        password: 'required|min:3|max:32',
+        password: 'required|min:6|max:32',
       },
       login_in_submission: false,
       login_show_alert: false,
