@@ -3,14 +3,20 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import VeeValidationPlugin from './includes/validation';
-import './includes/firebase';
+import { auth } from './includes/firebase';
 import './assets/tailwind.css';
 import './assets/main.css';
 
-const app = createApp(App);
+let app;
 
-app.use(store);
-app.use(router);
-app.use(VeeValidationPlugin);
+auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = createApp(App);
 
-app.mount('#app');
+    app.use(store);
+    app.use(router);
+    app.use(VeeValidationPlugin);
+
+    app.mount('#app');
+  }
+});

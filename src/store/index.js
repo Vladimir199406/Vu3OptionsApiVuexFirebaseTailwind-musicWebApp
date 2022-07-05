@@ -33,6 +33,13 @@ export default createStore({
 
       commit('toggleAuth');
     },
+    init_login({ commit }) {
+      const user = auth.currentUser;
+
+      if (user) {
+        commit('toggleAuth');
+      }
+    },
   },
   modules: {},
   getters: {
