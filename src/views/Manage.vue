@@ -320,7 +320,7 @@
 
 <script>
 export default {
-
+  name: 'manage',
 };
 </script>
 
