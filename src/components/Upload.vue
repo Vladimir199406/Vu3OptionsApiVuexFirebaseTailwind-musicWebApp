@@ -12,7 +12,8 @@
         </div>
         <div class="p-6">
             <!-- Upload Dropbox -->
-            <div class="
+            <div
+                class="
                     w-full
                     px-10
                     py-20
@@ -27,7 +28,17 @@
                     hover:bg-green-400
                     hover:border-green-400
                     hover:border-solid
-                  ">
+                "
+                :class=" {'bg-green-400 border-green-400 border-solid': is_dragover} "
+                @drag.prevent.stop=""
+                @dragstart.prevent.stop=""
+                @dragend.prevent.stop="is_dragover = false"
+                @dragover.prevent.stop="is_dragover = true"
+                @dragenter.prevent.stop="is_dragover = true"
+                @dragleave.prevent.stop="is_dragover = false"
+                @drop.prevent.stop="upload($event)"
+            >
+
                 <h5>Drop your files here</h5>
             </div>
             <hr class="my-6" />
@@ -57,8 +68,35 @@
 </template>
 
 <script>
+import { storage } from '@/includes/firebase';
+
 export default {
   name: 'Upload',
+  data() {
+    return {
+      is_dragover: false,
+    };
+  },
+  methods: {
+    upload($event) {
+      this.is_dragover = false;
+
+      const files = [...$event.dataTransfer.files];
+
+      files.forEach((file) => {
+        if (file.type !== 'audio/mpeg') {
+          return;
+        }
+
+        const storageRef = storage.ref();
+        // INFO: will return => music-f3afa.appspot.com/songs/nameOfFile
+        const songsRef = storageRef.child(`songs/${file.name}`);
+        songsRef.put(file);
+      });
+
+      console.log(files);
+    },
+  },
 };
 </script>
 
