@@ -24,9 +24,11 @@
               <div class="p-6">
                 <!-- Composition Items -->
                 <compostion-item
-                  v-for="song in songs"
+                  v-for="(song, index) in songs"
                   :key="song.docID"
                   :song="song"
+                  :index="index"
+                  :updateSong="updateSong"
                 />
               </div>
             </div>
@@ -62,6 +64,12 @@ export default {
 
       this.songs.push(song);
     });
+  },
+  methods: {
+    updateSong(index, values) {
+      this.songs[index].modified_name = values.modified_name;
+      this.songs[index].genre = values.genre;
+    },
   },
 };
 </script>
