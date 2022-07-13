@@ -24,6 +24,15 @@ export default createStore({
       });
     },
   },
+  getters: {
+    playing: (state) => {
+      if (state.sound.playing) {
+        return state.sound.playing();
+      }
+
+      return false;
+    },
+  },
   actions: {
     async register({ commit }, formData) {
       const userCred = await auth.createUserWithEmailAndPassword(
@@ -63,8 +72,17 @@ export default createStore({
 
       state.sound.play();
     },
+    async toggleAudio({ state }) {
+      if (!state.sound.playing) {
+        return;
+      }
+
+      if (state.sound.playing()) {
+        state.sound.pause();
+      } else {
+        state.sound.play();
+      }
+    },
   },
   modules: {},
-  getters: {
-  },
 });
