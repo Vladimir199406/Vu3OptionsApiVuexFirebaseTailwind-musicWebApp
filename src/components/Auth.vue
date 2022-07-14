@@ -1,10 +1,10 @@
 <template>
-  <!-- Auth Modal -->
   <div
     class="fixed z-10 inset-0 overflow-y-auto"
     id="modal"
     :class="{ hidden: !authModalShow }"
   >
+    <!-- Auth Modal -->
     <div
       class="
         flex

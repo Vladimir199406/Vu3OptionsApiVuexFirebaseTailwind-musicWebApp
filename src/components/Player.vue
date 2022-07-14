@@ -1,5 +1,4 @@
 <template>
-      <!-- Player -->
     <div
       class="
         fixed
@@ -14,6 +13,7 @@
         h-16
       "
     >
+      <!-- Player -->
       <div class="relative">
         <!-- Play/Pause Button -->
         <div class="float-left w-7 h-7 leading-3">
