@@ -15,7 +15,7 @@
     >
       <!-- Name -->
       <div class='mb-3'>
-        <label class='inline-block mb-2'>Name</label>
+        <label class='inline-block mb-2'>{{ $t('general.name') }}</label>
         <vee-field
           type='text'
           name='name'
@@ -37,7 +37,7 @@
       </div>
       <!-- Email -->
       <div class='mb-3'>
-        <label class='inline-block mb-2'>Email</label>
+        <label class='inline-block mb-2'>{{ $t('general.email') }}</label>
         <vee-field
           type='email'
           name='email'
@@ -59,7 +59,7 @@
       </div>
       <!-- Age -->
       <div class='mb-3'>
-        <label class='inline-block mb-2'>Age</label>
+        <label class='inline-block mb-2'>{{ $t('general.age') }}</label>
         <vee-field
           type='number'
           name='age'
@@ -80,7 +80,7 @@
       </div>
       <!-- Password -->
       <div class='mb-3'>
-        <label class='inline-block mb-2'>Password</label>
+        <label class='inline-block mb-2'>{{ $t('general.password') }}</label>
         <vee-field name='password' :bails='false' v-slot='{ field, errors }'>
           <input
             type='password'
@@ -106,7 +106,7 @@
       </div>
       <!-- Confirm Password -->
       <div class='mb-3'>
-        <label class='inline-block mb-2'>Confirm Password</label>
+        <label class='inline-block mb-2'>{{ $t('general.confirm_password') }}</label>
         <vee-field
           type='password'
           name='confirm_password'
@@ -128,7 +128,7 @@
       </div>
       <!-- Country -->
       <div class='mb-3'>
-        <label class='inline-block mb-2'>Country</label>
+        <label class='inline-block mb-2'>{{ $t('general.country') }}</label>
         <vee-field
           as='select'
           name='country'
@@ -160,7 +160,7 @@
           value='1'
           class='w-4 h-4 float-left -ml-6 mt-1 rounded'
         />
-        <label class='inline-block'>Accept terms of service</label>
+        <label class='inline-block'>{{ $t('general.accept_terms') }}</label>
         <ErrorMessage class='text-red-600 block' name='tos' />
       </div>
       <button
@@ -178,7 +178,7 @@
           hover:bg-purple-700
         '
       >
-        Submit
+        {{ $t('general.submit') }}
       </button>
     </vee-form>
   </div>

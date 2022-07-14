@@ -1,3 +1,49 @@
 {
-  "message": "hello i18n !!"
+  "about": {
+    "main": "Main Text"
+  },
+  "auth": {
+    "your_account": "Your Account"
+  },
+  "composition": {
+    "genre": "Genre",
+    "song_title": "Song Title"
+  },
+  "general": {
+    "about": "About",
+    "accept_terms": "Accept terms of service",
+    "age": "Age",
+    "confirm_password": "Confirm password",
+    "country": "Country",
+    "email": "Email",
+    "go_back": "Go Back",
+    "login": "Login",
+    "logout": "Logout",
+    "manage": "Manage",
+    "music": "Music",
+    "name": "Name",
+    "password": "Password",
+    "register": "Register",
+    "submit": "Submit"
+  },
+  "home": {
+    "description": "Listen to songs that interest you",
+    "listen": "Listen to Music",
+    "songs": "Songs"
+  },
+  "manage": {
+    "my_songs": "My Songs"
+  },
+  "player": {
+    "upload_by": "Uploaded By"
+  },
+  "song": {
+    "comment_count": "Comments: ",
+    "latest": "Latest",
+    "oldest": "Oldest"
+  },
+  "upload": {
+    "drop_files_here": "Drop your files here",
+    "upload": "Upload"
+  }
 }

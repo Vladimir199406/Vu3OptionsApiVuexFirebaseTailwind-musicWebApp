@@ -1,0 +1,49 @@
+{
+  "about": {
+    "main": "Основной текст"
+  },
+  "auth": {
+    "your_account": "Ваш Профиль"
+  },
+  "composition": {
+    "genre": "Жанр",
+    "song_title": "Заголовок Песни"
+  },
+  "general": {
+    "about": "Описание",
+    "accept_terms": "Принять условия пользования",
+    "age": "Возраст",
+    "confirm_password": "Подтвердить пароль",
+    "country": "Страна",
+    "email": "Почта",
+    "go_back": "Назад",
+    "login": "Войти",
+    "logout": "Выйти",
+    "manage": "Настройки",
+    "music": "Музыка",
+    "name": "Имя",
+    "password": "Пароль",
+    "register": "Зарегистрироваться",
+    "submit": "Подтвердить"
+  },
+  "home": {
+    "description": "Слушайте только интересующие Вас композиции",
+    "listen": "Слушайте Музыку",
+    "songs": "Песни"
+  },
+  "manage": {
+    "my_songs": "Мои Треки"
+  },
+  "player": {
+    "upload_by": "Загружено "
+  },
+  "song": {
+    "comment_count": "Комментарии: ",
+    "latest": "Последние",
+    "oldest": "Старые"
+  },
+  "upload": {
+    "drop_files_here": "Перетащите сюда свои файлы",
+    "upload": "Загрузить"
+  }
+}

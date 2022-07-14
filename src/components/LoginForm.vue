@@ -12,7 +12,7 @@
   >
     <!-- Email -->
     <div class='mb-3'>
-      <label class='inline-block mb-2'>Email</label>
+      <label class='inline-block mb-2'>{{ $t('general.email') }}</label>
       <vee-field
         type='email'
         name='email'
@@ -34,7 +34,7 @@
     </div>
     <!-- Password -->
     <div class='mb-3'>
-      <label class='inline-block mb-2'>Password</label>
+      <label class='inline-block mb-2'>{{ $t('general.password') }}</label>
       <vee-field
         type='password'
         name='password'
@@ -69,7 +69,7 @@
         hover:bg-purple-700
       '
     >
-      Submit
+      {{ $t('general.submit') }}
     </button>
   </vee-form>
 </div>
