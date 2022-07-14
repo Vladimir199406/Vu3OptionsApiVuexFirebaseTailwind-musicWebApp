@@ -75,8 +75,8 @@
             <span
               class="absolute top-neg-8 text-gray-800 text-lg"
               :style="{ left: playerProgress }"
+              v-simple-icon="'fas fa-circle'"
             >
-              <i class="fas fa-circle"></i>
             </span>
             <!-- Player Progress Bar-->
             <span

@@ -5,8 +5,8 @@
       <button
         class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right"
         @click.prevent="deleteSong"
+        v-simple-icon="'fa fa-times'"
       >
-        <i class="fa fa-times"></i>
       </button>
       <button
         class="
@@ -20,8 +20,8 @@
           float-right
         "
         @click.prevent="showForm = !showForm"
+        v-simple-icon="'fa fa-pencil-alt'"
       >
-        <i class="fa fa-pencil-alt"></i>
       </button>
     </div>
     <div v-show="showForm">

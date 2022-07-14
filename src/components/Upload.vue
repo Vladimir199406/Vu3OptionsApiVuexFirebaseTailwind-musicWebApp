@@ -6,9 +6,11 @@
                 relative
                 flex flex-col
               ">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
+        <div
+          class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
+          v-simple-icon="'fas fa-upload float-right text-green-400 text-2xl'"
+        >
             <span class="card-title">Upload</span>
-            <i class="fas fa-upload float-right text-green-400 text-2xl"></i>
         </div>
         <div class="p-6">
             <!-- Upload Dropbox -->

@@ -50,8 +50,8 @@
             <div
               class="modal-close cursor-pointer z-50"
               @click.prevent="toggleAuthModal"
+              v-simple-icon="'fas fa-times'"
             >
-              <i class="fas fa-times"></i>
             </div>
           </div>
 
