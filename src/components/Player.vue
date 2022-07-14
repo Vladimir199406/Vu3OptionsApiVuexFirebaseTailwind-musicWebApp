@@ -1,5 +1,4 @@
 <template>
-      <!-- Player -->
     <div
       class="
         fixed
@@ -14,6 +13,7 @@
         h-16
       "
     >
+      <!-- Player -->
       <div class="relative">
         <!-- Play/Pause Button -->
         <div class="float-left w-7 h-7 leading-3">
@@ -54,7 +54,8 @@
             v-if="currentSong.modified_name"
           >
             <span class="song-title">{{ currentSong.modified_name }}</span>
-            <span class="song-artist"> (Uploaded by {{ currentSong.display_name }})</span>
+            <span class="song-artist">
+              ({{ $t('player.upload_by') }} {{ currentSong.display_name }})</span>
           </div>
           <!-- Scrub Container  -->
           <span
@@ -75,8 +76,8 @@
             <span
               class="absolute top-neg-8 text-gray-800 text-lg"
               :style="{ left: playerProgress }"
+              v-simple-icon="'fas fa-circle'"
             >
-              <i class="fas fa-circle"></i>
             </span>
             <!-- Player Progress Bar-->
             <span

@@ -1,10 +1,10 @@
 <template>
-  <!-- Auth Modal -->
   <div
     class="fixed z-10 inset-0 overflow-y-auto"
     id="modal"
     :class="{ hidden: !authModalShow }"
   >
+    <!-- Auth Modal -->
     <div
       class="
         flex
@@ -45,13 +45,13 @@
         <div class="py-4 text-left px-6">
           <!--Title-->
           <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold">Your Account</p>
+            <p class="text-2xl font-bold">{{ $t('auth.your_account') }}</p>
             <!-- Modal Close Button -->
             <div
               class="modal-close cursor-pointer z-50"
               @click.prevent="toggleAuthModal"
+              v-simple-icon="'fas fa-times'"
             >
-              <i class="fas fa-times"></i>
             </div>
           </div>
 
@@ -66,7 +66,7 @@
                   'hover:text-white text-white bg-blue-600': tab === 'login',
                   'hover:text-blue-600': tab === 'register',
                 }"
-                >Login</a
+                >{{ $t('general.login') }}</a
               >
             </li>
             <li class="flex-auto text-center">
@@ -78,7 +78,7 @@
                   'hover:text-white text-white bg-blue-600': tab === 'register',
                   'hover:text-blue-600': tab === 'login',
                 }"
-                >Register</a
+                >{{ $t('general.register') }}</a
               >
             </li>
           </ul>
