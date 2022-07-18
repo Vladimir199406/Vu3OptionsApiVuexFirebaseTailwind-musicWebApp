@@ -8,6 +8,8 @@ import SimpleIcon from './directives/simple-icon';
 import './assets/tailwind.css';
 import './assets/main.css';
 import i18n from './includes/i18n';
+import './registerServiceWorker';
+import GlobalComponents from './includes/_globals';
 
 let app;
 
@@ -18,8 +20,8 @@ auth.onAuthStateChanged(() => {
     app.use(store);
     app.use(router);
     app.use(VeeValidationPlugin);
+    app.use(GlobalComponents);
     app.directive('simple-icon', SimpleIcon);
-
     app.mount('#app');
   }
 });

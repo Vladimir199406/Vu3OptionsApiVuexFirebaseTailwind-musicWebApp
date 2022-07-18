@@ -117,7 +117,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(['userLoggedIn', 'currentSong']),
+    ...mapState({
+      userLoggedIn: (state) => state.auth.userLoggedIn,
+      currentSong: (state) => state.player.currentSong,
+    }),
     ...mapGetters(['playing']),
     sortedComments() {
       return this.comments.slice().sort((a, b) => {
