@@ -53,7 +53,7 @@ router.beforeEach((to, from, next) => {
   }
 
   // INFO: if any records have the require prop => proceed the auth check
-  if (store.state.userLoggedIn) {
+  if (store.state.auth.userLoggedIn) {
     next();
   } else {
     next({ name: 'home' });

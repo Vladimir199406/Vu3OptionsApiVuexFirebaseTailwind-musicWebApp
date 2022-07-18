@@ -1,132 +1,14 @@
 import { createStore } from 'vuex';
-import { auth, usersCollection } from '@/includes/firebase';
-import { Howl } from 'howler';
-import helper from '@/includes/helper';
+import auth from './modules/auth';
+import player from './modules/player';
 
 export default createStore({
-  state: {
-    authModalShow: false,
-    userLoggedIn: false,
-    currentSong: {},
-    sound: {},
-    seek: '00:00',
-    duration: '00:00',
-    playerProgress: '0%',
+  modules: {
+    auth,
+    player,
   },
-  mutations: {
-    toggleAuthModal: (state) => {
-      state.authModalShow = !state.authModalShow;
-    },
-    toggleAuth(state) {
-      state.userLoggedIn = !state.userLoggedIn;
-    },
-    newSong(state, songData) {
-      state.currentSong = songData;
-      state.sound = new Howl({
-        src: [songData.url],
-        html5: true,
-      });
-    },
-    updatePosition(state) {
-      state.seek = helper.formatTime(state.sound.seek());
-      state.duration = helper.formatTime(state.sound.duration());
-      state.playerProgress = `${(state.sound.seek() / state.sound.duration()) * 100}%`;
-    },
-  },
-  getters: {
-    playing: (state) => {
-      if (state.sound.playing) {
-        return state.sound.playing();
-      }
-
-      return false;
-    },
-  },
-  actions: {
-    async register({ commit }, formData) {
-      const userCred = await auth.createUserWithEmailAndPassword(
-        formData.email, formData.password,
-      );
-
-      await usersCollection.doc(userCred.user.uid).set({
-        name: formData.name,
-        email: formData.email,
-        age: formData.age,
-        country: formData.country,
-      });
-
-      await userCred.user.updateProfile({
-        displayName: formData.name,
-      });
-
-      commit('toggleAuth');
-    },
-    async login({ commit }, formData) {
-      await auth.signInWithEmailAndPassword(formData.email, formData.password);
-      commit('toggleAuth');
-    },
-    init_login({ commit }) {
-      const user = auth.currentUser;
-
-      if (user) {
-        commit('toggleAuth');
-      }
-    },
-    async signout({ commit }) {
-      await auth.signOut();
-      commit('toggleAuth');
-    },
-    async newSong({ commit, state, dispatch }, songData) {
-      if (state.sound instanceof Howl) {
-        state.sound.unload();
-      }
-
-      commit('newSong', songData);
-
-      state.sound.play();
-
-      state.sound.on('play', () => {
-        requestAnimationFrame(() => {
-          dispatch('progress');
-        });
-      });
-    },
-    async toggleAudio({ state }) {
-      if (!state.sound.playing) {
-        return;
-      }
-
-      if (state.sound.playing()) {
-        state.sound.pause();
-      } else {
-        state.sound.play();
-      }
-    },
-    progress({ commit, state, dispatch }) {
-      commit('updatePosition');
-
-      if (state.sound.playing()) {
-        requestAnimationFrame(() => {
-          dispatch('progress');
-        });
-      }
-    },
-    updateSeek({ state, dispatch }, payload) {
-      if (!state.sound.playing) {
-        return;
-      }
-
-      const { x, width } = payload.currentTarget.getBoundingClientRect();
-      const clickX = payload.clientX - x;
-      const percentage = clickX / width;
-      const seconds = state.sound.duration() * percentage;
-
-      state.sound.seek(seconds);
-
-      state.sound.once('seek', () => {
-        dispatch('progress');
-      });
-    },
-  },
-  modules: {},
+  state: {},
+  mutations: {},
+  getters: {},
+  actions: {},
 });
