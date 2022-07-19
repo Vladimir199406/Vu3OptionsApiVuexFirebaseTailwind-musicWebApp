@@ -132,21 +132,24 @@ export default {
       });
     },
   },
-  async created() {
-    const docSnapShot = await songsCollection.doc(this.$route.params.id).get();
+  async beforeRouteEnter(to, from, next) {
+    const docSnapShot = await songsCollection.doc(to.params.id).get();
 
-    if (!docSnapShot.exists) {
-      this.$router.push({ name: 'home' });
-      return;
-    }
+    next((vm) => {
+      if (!docSnapShot.exists) {
+        vm.$router.push({ name: 'home' });
+        return;
+      }
 
-    const { sort } = this.$route.query;
+      const { sort } = vm.$route.query;
 
-    this.sort = sort === '1' || sort === '2' ? sort : '1';
+      // eslint-disable-next-line no-param-reassign
+      vm.sort = sort === '1' || sort === '2' ? sort : '1';
 
-    this.song = docSnapShot.data();
-    console.log('song Object: ', this.song);
-    this.getComments();
+      // eslint-disable-next-line no-param-reassign
+      vm.song = docSnapShot.data();
+      vm.getComments();
+    });
   },
   methods: {
     ...mapActions(['newSong', 'toggleAudio']),
