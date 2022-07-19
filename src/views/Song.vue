@@ -5,12 +5,12 @@
       <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg"
         style="background-image: url(/assets/img/song-header.png)">
       </div>
-      <div class="container mx-auto flex items-center">
+      <div class="container mx-auto flex flex-wrap items-center">
         <!-- Play/Pause Button -->
         <button
             type="button"
-            class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
-            focus:outline-none"
+            class="z-50 h-20 w-20 text-3xl bg-white text-black rounded-full
+            focus:outline-none ml-5"
             @click.prevent="
               currentSong.modified_name !== song.modified_name ? newSong(song) : toggleAudio()
             "
@@ -20,9 +20,9 @@
                 :class="{ 'fa-play': !playing, 'fa-pause': playing }"
               ></i>
         </button>
-        <div class="z-50 text-left ml-8">
+        <div class="z-50 text-left ml-4">
           <!-- Song Info -->
-          <div class="text-3xl font-bold">
+          <div class="text-lg font-bold">
             {{ song.modified_name }}
           </div>
           <div>{{ song.genre }}</div>
@@ -37,7 +37,11 @@
           v-simple-icon="'fa fa-comments float-right text-green-400 text-2xl'"
         >
           <!-- Comment Count -->
-          <span class="card-title"> {{ $t('song.comment_count') }} {{ song.comment_count }}</span>
+          <span class="card-title">
+            <!-- TODO update text or get rid of it -->
+            <!-- {{ $t('song.comment_count') }} -->
+            {{ song.comment_count }}
+          </span>
         </div>
         <div class="p-6">
           <div

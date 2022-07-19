@@ -71,6 +71,13 @@ input[type="file"]{
   will-change: background-position;
 }
 
+.text-max-length {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 160px;
+  white-space: nowrap;
+}
+
 @keyframes progress-bar-stripes {
   0% {
     background-position: 1rem 0;

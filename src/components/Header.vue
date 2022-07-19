@@ -15,12 +15,13 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <router-link
+            <!--TODO update route below, add logic with account + pictures (insta style)-->
+            <!-- <router-link
               class="px-2 text-white"
               :to="{ name: 'about' }"
             >
               {{ $t('general.about') }}
-            </router-link>
+            </router-link> -->
           </li>
           <li v-if="!userLoggedIn">
             <a

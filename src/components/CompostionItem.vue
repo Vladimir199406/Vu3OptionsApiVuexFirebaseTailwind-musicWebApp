@@ -1,7 +1,7 @@
 <template>
   <div class="border border-gray-200 p-3 mb-4 rounded">
     <div v-show="!showForm">
-      <h4 class="inline-block text-2xl font-bold">{{ song.modified_name }}</h4>
+      <h4 class="inline-block font-bold text-max-length">{{ song.modified_name }}</h4>
       <button
         class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right"
         @click.prevent="deleteSong"
@@ -22,6 +22,18 @@
         @click.prevent="showForm = !showForm"
         v-simple-icon="'fa fa-pencil-alt'"
       >
+      </button>
+            <!-- Play/Pause Button -->
+      <button
+          type="button"
+          class="ml-1 py-1 px-2 text-sm rounded text-white float-right"
+          @click.prevent="
+            currentSong.modified_name !== song.modified_name ? newSong(song) : toggleAudio()
+          "
+        >
+            <i
+              class="fa text-gray-500 fa-play"
+            ></i>
       </button>
     </div>
     <div v-show="showForm">
@@ -75,18 +87,18 @@
         </div>
         <button
           type="submit"
-          class="py-1.5 px-3 rounded text-white bg-green-600"
+          class="py-1.5 px-3 rounded text-white bg-green-600 m-2"
           :disabled="in_submission"
         >
           {{ $t('general.submit') }}
         </button>
         <button
           type="button"
-          class="py-1.5 px-3 rounded text-white bg-gray-600"
+          class="py-1.5 px-3 rounded text-white bg-gray-600 m-2"
           :disabled="in_submission"
           @click.prevent="showForm = false"
         >
-          {{ $t('general.go_back') }}
+          {{ $t('general.cancel_changes') }}
         </button>
       </vee-form>
     </div>
@@ -94,6 +106,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex';
 import { storage, songsCollection } from '@/includes/firebase';
 
 export default {
@@ -132,7 +145,14 @@ export default {
       alert_message: 'Please wait! Updating song info.',
     };
   },
+  computed: {
+    ...mapState({
+      currentSong: (state) => state.player.currentSong,
+    }),
+    ...mapGetters(['playing']),
+  },
   methods: {
+    ...mapActions(['newSong', 'toggleAudio']),
     async edit(values) {
       this.in_submission = true;
       this.show_alert = true;

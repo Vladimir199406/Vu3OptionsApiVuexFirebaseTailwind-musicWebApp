@@ -1,5 +1,6 @@
 <template>
     <div
+      v-if="currentSong.modified_name"
       class="
         fixed
         bottom-0
@@ -50,12 +51,19 @@
               text-lg text-center
               mx-auto
               player-song-info
+              text-max-length
             "
             v-if="currentSong.modified_name"
           >
-            <span class="song-title">{{ currentSong.modified_name }}</span>
-            <span class="song-artist">
-              ({{ $t('player.upload_by') }} {{ currentSong.display_name }})</span>
+            <span
+              class="song-title text-sm"
+            >
+              {{ currentSong.modified_name }}
+            </span>
+            <!-- TODO update text or get rid of it -->
+            <!-- <span class="song-artist">
+              ({{ $t('player.upload_by') }} {{ currentSong.display_name }})
+            </span> -->
           </div>
           <!-- Scrub Container  -->
           <span

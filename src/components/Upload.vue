@@ -10,7 +10,8 @@
           class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
           v-simple-icon="'fas fa-upload float-right text-green-400 text-2xl'"
         >
-            <span class="card-title">{{ $t('upload.upload') }}</span>
+            <!-- TODO update text or get rid of it -->
+            <!-- <span class="card-title">{{ $t('upload.upload') }}</span> -->
         </div>
         <div class="p-6">
             <!-- Upload Dropbox -->
