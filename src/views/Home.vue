@@ -30,7 +30,6 @@
           class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
           v-simple-icon="'fa fa-headphones-alt float-right text-green-400 text-xl'"
         >
-          <span class="card-title">{{ $t('home.songs') }}</span>
           <!-- Icon -->
         </div>
         <!-- Playlist -->

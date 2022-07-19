@@ -11,7 +11,9 @@
             type="button"
             class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
             focus:outline-none"
-            @click.prevent="!currentSong.modified_name ? newSong(song) : toggleAudio()"
+            @click.prevent="
+              currentSong.modified_name !== song.modified_name ? newSong(song) : toggleAudio()
+            "
           >
               <i
                 class="fa text-gray-500 text-xxl"

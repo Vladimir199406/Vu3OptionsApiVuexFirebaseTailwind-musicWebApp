@@ -7,7 +7,7 @@
         class="text-white font-bold uppercase text-2xl mr-4"
         :to="{ name: 'home' }" exact-active-class="no-active"
       >
-      {{ $t('general.music') }}
+      {{ $t('general.all_tracks') }}
       </router-link>
 
       <div class="flex flex-grow items-center">
@@ -69,7 +69,7 @@ export default {
       userLoggedIn: (state) => state.auth.userLoggedIn,
     }),
     currentLocale() {
-      return this.$i18n.locale === 'ru' ? 'Russian' : 'English';
+      return this.$i18n.locale === 'ru' ? 'Rus' : 'Eng';
     },
   },
   methods: {
