@@ -5,22 +5,24 @@
       <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg"
         style="background-image: url(/assets/img/song-header.png)">
       </div>
-      <div class="container mx-auto flex items-center">
+      <div class="container mx-auto flex flex-wrap items-center">
         <!-- Play/Pause Button -->
         <button
             type="button"
-            class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
-            focus:outline-none"
-            @click.prevent="!currentSong.modified_name ? newSong(song) : toggleAudio()"
+            class="z-50 h-20 w-20 text-3xl bg-white text-black rounded-full
+            focus:outline-none ml-5"
+            @click.prevent="
+              currentSong.modified_name !== song.modified_name ? newSong(song) : toggleAudio()
+            "
           >
               <i
                 class="fa text-gray-500 text-xxl"
                 :class="{ 'fa-play': !playing, 'fa-pause': playing }"
               ></i>
         </button>
-        <div class="z-50 text-left ml-8">
+        <div class="z-50 text-left ml-4">
           <!-- Song Info -->
-          <div class="text-3xl font-bold">
+          <div class="text-lg font-bold">
             {{ song.modified_name }}
           </div>
           <div>{{ song.genre }}</div>
@@ -35,7 +37,11 @@
           v-simple-icon="'fa fa-comments float-right text-green-400 text-2xl'"
         >
           <!-- Comment Count -->
-          <span class="card-title"> {{ $t('song.comment_count') }} {{ song.comment_count }}</span>
+          <span class="card-title">
+            <!-- TODO update text or get rid of it -->
+            <!-- {{ $t('song.comment_count') }} -->
+            {{ song.comment_count }}
+          </span>
         </div>
         <div class="p-6">
           <div
@@ -132,21 +138,24 @@ export default {
       });
     },
   },
-  async created() {
-    const docSnapShot = await songsCollection.doc(this.$route.params.id).get();
+  async beforeRouteEnter(to, from, next) {
+    const docSnapShot = await songsCollection.doc(to.params.id).get();
 
-    if (!docSnapShot.exists) {
-      this.$router.push({ name: 'home' });
-      return;
-    }
+    next((vm) => {
+      if (!docSnapShot.exists) {
+        vm.$router.push({ name: 'home' });
+        return;
+      }
 
-    const { sort } = this.$route.query;
+      const { sort } = vm.$route.query;
 
-    this.sort = sort === '1' || sort === '2' ? sort : '1';
+      // eslint-disable-next-line no-param-reassign
+      vm.sort = sort === '1' || sort === '2' ? sort : '1';
 
-    this.song = docSnapShot.data();
-    console.log('song Object: ', this.song);
-    this.getComments();
+      // eslint-disable-next-line no-param-reassign
+      vm.song = docSnapShot.data();
+      vm.getComments();
+    });
   },
   methods: {
     ...mapActions(['newSong', 'toggleAudio']),

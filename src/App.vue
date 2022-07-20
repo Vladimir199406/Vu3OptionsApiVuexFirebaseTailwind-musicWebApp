@@ -2,7 +2,7 @@
   <div>
     <app-header />
 
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component }" class="main-block">
       <transition name="fade" mode="out-in">
         <component :is="Component"></component>
       </transition>

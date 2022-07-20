@@ -7,7 +7,7 @@
         class="text-white font-bold uppercase text-2xl mr-4"
         :to="{ name: 'home' }" exact-active-class="no-active"
       >
-      {{ $t('general.music') }}
+      {{ $t('general.all_tracks') }}
       </router-link>
 
       <div class="flex flex-grow items-center">
@@ -15,12 +15,13 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <router-link
+            <!--TODO update route below, add logic with account + pictures (insta style)-->
+            <!-- <router-link
               class="px-2 text-white"
               :to="{ name: 'about' }"
             >
               {{ $t('general.about') }}
-            </router-link>
+            </router-link> -->
           </li>
           <li v-if="!userLoggedIn">
             <a
@@ -69,7 +70,7 @@ export default {
       userLoggedIn: (state) => state.auth.userLoggedIn,
     }),
     currentLocale() {
-      return this.$i18n.locale === 'ru' ? 'Russian' : 'English';
+      return this.$i18n.locale === 'ru' ? 'Rus' : 'Eng';
     },
   },
   methods: {
