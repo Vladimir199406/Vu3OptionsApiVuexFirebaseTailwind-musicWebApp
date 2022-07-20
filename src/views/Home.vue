@@ -3,22 +3,24 @@
     <!-- Introduction -->
     <section class="mb-8 py-20 text-white text-center relative">
       <div
-        class="absolute inset-0 w-full h-full bg-contain introduction-bg"
+        class="absolute inset-0 w-full h-full bg-cover introduction-bg"
         style="background-image: url(assets/img/header.png)"
       ></div>
       <div class="container mx-auto">
-        <div class="text-white main-header-content">
-          <h1 class="font-bold text-5xl mb-5">{{ $t('home.listen') }}</h1>
-          <p class="w-full md:w-8/12 mx-auto">
+        <div class="text-white main-header-content rainbow-shadow">
+          <h1 class="font-bold text-5xl mb-5 title-shadow p-4">{{ $t('home.listen') }}</h1>
+          <!-- TODO update text or get rid of it -->
+          <!-- <p class="w-full md:w-8/12 mx-auto text-xl">
             {{ $t('home.description') }}
-          </p>
+          </p> -->
         </div>
       </div>
 
-      <img
+      <!-- TODO update pic or get rid of it -->
+      <!-- <img
         class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full"
         src="assets/img/introduction-music.png"
-      />
+      /> -->
     </section>
 
     <!-- Main Content -->
