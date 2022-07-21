@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'song', params: { id: song.docID }}">
+  <router-link :to="{ name: 'song', params: { id: song.docID }}" :id="`song-id-${song.docID}`">
     <li class="
         flex
         justify-between
