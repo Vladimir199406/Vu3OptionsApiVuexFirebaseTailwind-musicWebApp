@@ -14,6 +14,7 @@
             @click.prevent="
               currentSong.modified_name !== song.modified_name ? newSong(song) : toggleAudio()
             "
+            id="play-button"
           >
               <i
                 class="fa text-gray-500 text-xxl"
